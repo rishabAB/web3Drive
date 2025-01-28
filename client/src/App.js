@@ -2,6 +2,9 @@
 import Upload from "./artifacts/contracts/Upload.sol/Upload.json";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
+import FileUpload from "../src/components/FileUpload";
+import Modal from "../src/components/Modal";
+import Display from "../src/components/Display";
 
 import "./App.css";
 
@@ -18,6 +21,14 @@ function App() {
       if (provider) {
      
         await provider.send("eth_requestAccounts", []);
+
+        /* here below window.ethereum.on .. we are doing this as part of our functionality like when we change 
+        our wallet addresss in metamask then we need to reload to see changes so to avoid that.So when wallet address will change it will get reloaded */
+
+        window.ethereum.on("accountsChanged",() =>
+        {
+          window.location.reload();
+        })
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         setAccount(address);
@@ -38,8 +49,22 @@ function App() {
     provider && loadProvider();
   }, []);
   return (
-    
-     <div>Hey react</div>
+    <div className="App">
+    <h1 style={{ color: "white" }}>Gdrive 3.0</h1>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+
+    <p style={{ color: "white" }}>
+      Account : {account ? account : "Not connected"}
+    </p>
+    <FileUpload
+      account={account}
+      contract={contract}
+    ></FileUpload>
+    <Display contract={contract} account={account}></Display>
+  </div>
+   
     
   );
 }
