@@ -1,7 +1,7 @@
 import "./FileUpload.css";
 import { useState } from "react";
 import axios from "axios";
-const FileUpload = ({userWalletAddress,contract}) =>
+const FileUpload = ({walletAddress,contract}) =>
 {
 
     // Handle image - to upload the image on ipfs
@@ -18,7 +18,7 @@ const FileUpload = ({userWalletAddress,contract}) =>
         {
             setFile(data);
         }
-        setFileName(data.name);
+        setFileName(event.target.files[0].name);
         event.preventDefault();
 
     }
@@ -46,7 +46,7 @@ const FileUpload = ({userWalletAddress,contract}) =>
 
                   const imgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
                   console.log(imgHash); // This is the file link that we have uploaded
-                  contract.add(userWalletAddress,imgHash); // Here we calling our function add in our smart contract by using 
+                  contract.add(walletAddress,imgHash); // Here we calling our function add in our smart contract by using 
                   //the contract instance that we created in our app.js
                   alert("Image Uploaded Successfully");
                   setFileName("No File Selected");
@@ -65,15 +65,14 @@ const FileUpload = ({userWalletAddress,contract}) =>
               Choose Image
             </label>
             <input
-             
               type="file"
               id="file-upload"
               name="data"
               onChange={retrieveFile}
-           
+              disabled={!walletAddress}
             />
-            <span className="textArea">Image: </span>
-            <button type="submit" className="upload" onClick={handleSubmit} >
+            <span className="textArea">Image:{fileName} </span>
+            <button type="submit" className="upload" onClick={handleSubmit} disabled={!file}>
               Upload File
             </button>
           </form>

@@ -9,7 +9,7 @@ import Display from "../src/components/Display";
 import "./App.css";
 
 function App() {
-  const [account, setAccount] = useState("");
+  const [walletAddress, setWalletAddress] = useState("");
   const [contract, setContract] = useState(null);
   const [provider, setProvider] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -20,6 +20,7 @@ function App() {
     const loadProvider = async () => {
       if (provider) {
      
+        // In this line we are connecting and asking for permission from metamask
         await provider.send("eth_requestAccounts", []);
 
         /* here below window.ethereum.on .. we are doing this as part of our functionality like when we change 
@@ -31,7 +32,7 @@ function App() {
         })
         const signer = provider.getSigner();
         const address = await signer.getAddress();
-        setAccount(address);
+        setWalletAddress(address);
         let contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
         const contract = new ethers.Contract(
@@ -56,13 +57,13 @@ function App() {
     <div class="bg bg3"></div>
 
     <p style={{ color: "white" }}>
-      Account : {account ? account : "Not connected"}
+      Account : {walletAddress ? walletAddress : "Not connected"}
     </p>
     <FileUpload
-      account={account}
+      walletAddress={walletAddress}
       contract={contract}
     ></FileUpload>
-    <Display contract={contract} account={account}></Display>
+    <Display contract={contract} walletAddress={walletAddress}></Display>
   </div>
    
     
