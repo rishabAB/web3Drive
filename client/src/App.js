@@ -19,17 +19,15 @@ function App() {
 
     const loadProvider = async () => {
       if (provider) {
-     
         // In this line we are connecting and asking for permission from metamask
         await provider.send("eth_requestAccounts", []);
 
         /* here below window.ethereum.on .. we are doing this as part of our functionality like when we change 
         our wallet addresss in metamask then we need to reload to see changes so to avoid that.So when wallet address will change it will get reloaded */
 
-        window.ethereum.on("accountsChanged",() =>
-        {
+        window.ethereum.on("accountsChanged", () => {
           window.location.reload();
-        })
+        });
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         setWalletAddress(address);
@@ -50,23 +48,31 @@ function App() {
     provider && loadProvider();
   }, []);
   return (
-    <div className="App">
-    <h1 style={{ color: "white" }}>Gdrive 3.0</h1>
-    <div class="bg"></div>
-    <div class="bg bg2"></div>
-    <div class="bg bg3"></div>
+    <>
+      {!modalOpen && (
+        <button className="share" onClick={() => setModalOpen(true)}>
+          Share
+        </button>
+      )}
+      {modalOpen && (
+        <Modal setModalOpen={setModalOpen} contract={contract}></Modal>
+      )}
+      <div className="App">
+        <h1 style={{ color: "white" }}>Gdrive 3.0</h1>
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
 
-    <p style={{ color: "white" }}>
-      Account : {walletAddress ? walletAddress : "Not connected"}
-    </p>
-    <FileUpload
-      walletAddress={walletAddress}
-      contract={contract}
-    ></FileUpload>
-    <Display contract={contract} walletAddress={walletAddress}></Display>
-  </div>
-   
-    
+        <p style={{ color: "white" }}>
+          Account : {walletAddress ? walletAddress : "Not connected"}
+        </p>
+        <FileUpload
+          walletAddress={walletAddress}
+          contract={contract}
+        ></FileUpload>
+        <Display walletAddress={walletAddress} contract={contract}></Display>
+      </div>
+    </>
   );
 }
 
