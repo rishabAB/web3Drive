@@ -1,49 +1,58 @@
-.top {
-    margin: 40px;
-  }
   
   input[type="file"] {
     display: none;
   }
+  .upload-flex{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  .border ,.ant-table-content{
+    padding: 18px;
+    border: 3px solid #a09e9ef0;
+    border-radius: 20px;
+    box-shadow: 0px 0px 3px 0px;
+    max-width: 500px;
+    margin: auto;
+  }
+  .choose-buttons{
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    
+  }
   
   .choose {
-    background-color: initial;
-    background-image: linear-gradient(-180deg, #5aff15, #00b712);
+   
+   
+    background-color: #329b5ebf;
+    
     border-radius: 6px;
-    color: #ffffff;
-    padding: 5px 10px;
+   font-size: 14px;
+    padding:10px;
     border-radius: 6px;
     margin-right: 10px;
-    padding-bottom: 10px;
-  }
-  .choose:hover {
-    box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
-  }
-  .textArea {
-    color: white;
+    cursor: pointer;
   }
   
   .upload {
-    border: 1px solid #13aa52;
-    background-color: #13aa52;
+    background-image: linear-gradient(-180deg, #60914bcc, #26ba35);
     color: #ffffff;
-    padding: 5px 10px;
+    padding: 10px 22px;
     border-radius: 6px;
-    margin-left: 10px;
+    margin: auto;
+    display: block;
+    cursor: pointer;
+    border: unset;
   }
   
-  .upload:hover {
-    border: 1px solid #13aa52;
-    background-color: #a5efc1;
-    color: #ffffff;
-    padding: 5px 10px;
-  }
+
   
   .upload:disabled,
   .upload[disabled] {
-    border: 1px solid #999999;
-    background-color: #cccccc;
-    color: #666666;
+  
+    color: white;
+    cursor: not-allowed;
   }
   
   div {

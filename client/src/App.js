@@ -58,12 +58,16 @@ function App() {
         <Modal setModalOpen={setModalOpen} contract={contract}></Modal>
       )}
       <div className="App">
-        <h1 style={{ color: "white" }}>Gdrive 3.0</h1>
-        <div class="bg"></div>
-        <div class="bg bg2"></div>
-        <div class="bg bg3"></div>
+        <h1>IPFS Storage Dapp</h1>
 
-        <p style={{ color: "white" }}>
+        <p style={{"color":"white","lineHeight":"1.5"}}>
+          This is an IPFS storage platform where you can upload virtually any
+          type of file, including images, videos, documents, and more upto a
+          limit of 25GB. You can also share/unshare your files to a wallet
+          address.
+        </p>
+
+        <p>
           Account : {walletAddress ? walletAddress : "Not connected"}
         </p>
         <FileUpload

@@ -1,5 +1,24 @@
 .App {
   text-align: center;
+  /* border: 8px solid #739073cc; */
+  width: 75%;
+  margin: auto;
+  padding: 15px 10px 15px 10px;
+  border-radius: 44px;
+  color: white;
+  /* background-color: #0c457d; */
+  max-width: 700px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    to bottom right,
+    rgb(175 170 170 / 60%),
+    /* Grey in top-left */ #0c457d 80%,
+    /* Main blue background */ rgba(128, 128, 128, 0.4)
+      /* Grey in bottom-right */
+  );
 }
 
 .App-logo {
@@ -21,48 +40,19 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 html {
   height: 100%;
 }
 
 body {
   margin: 0;
-}
-
-.bg {
-  animation: slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
-  bottom: 0;
-  left: -50%;
-  opacity: 0.5;
-  position: fixed;
-  right: -50%;
-  top: 0;
-  z-index: -1;
-}
-
-.bg2 {
-  animation-direction: alternate-reverse;
-  animation-duration: 4s;
-}
-
-.bg3 {
-  animation-duration: 5s;
+  background-color: black;
 }
 
 .content {
@@ -79,7 +69,8 @@ body {
 }
 
 h1 {
-  font-family: monospace;
+  font-size: 40px;
+  margin-bottom: 25px;
 }
 
 @keyframes slide {
@@ -96,9 +87,7 @@ h1 {
   margin: 0;
   box-sizing: border-box;
 }
-body {
-  height: 900px;
-}
+
 header {
   text-align: center;
   width: 100%;
@@ -114,14 +103,8 @@ header .overlay {
   height: 100%;
   padding: 50px;
   color: #fff;
-  text-shadow: 1px 1px 1px #333;
+  /* text-shadow: 1px 1px 1px #333; */
   background-image: linear-gradient(135deg, #9f05ff69 10%, #fd5e086b 100%);
-}
-
-h1 {
-  font-family: "Dancing Script", cursive;
-  font-size: 60px;
-  margin-bottom: 30px;
 }
 
 h3,
@@ -147,4 +130,40 @@ p {
 .share:hover {
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.ant-table-wrapper .ant-table {
+  background: unset !important;
+  color: white;
+}
+.ant-table-thead > tr > th {
+  background: unset !important;
+  color: white !important;
+}
+.ant-table-tbody > tr > td {
+  max-width: 400px;
+}
+
+.ant-table-tbody > tr:last-child > td {
+  border-bottom: unset !important;
+}
+.ant-table-cell-row-hover {
+  background: unset!important ;
+  cursor: pointer;
+}
+.ant-table-cell a {
+  color: white;
+  margin-bottom: 1px;
+} 
+.ant-table-cell a:hover {
+  color: black;
+}
+.media_link{
+  display: flex;
+  justify-content: space-between;
+
+  svg{
+    height: 18px;
+    fill: white;
+    cursor: pointer;
+  }
 }
